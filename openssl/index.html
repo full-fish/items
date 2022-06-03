@@ -1,0 +1,136 @@
+<!-- !공식문서 -->
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript RSA Encryption</title>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="jsencrypt.min.js"></script>
+    <script type="text/javascript">
+      // Call this code when the page is done loading.
+      $(function () {
+        // Run a quick encryption/decryption when they click.
+        $("#testme").click(function () {
+          // Encrypt with the public key...
+          var encrypt = new JSEncrypt();
+          encrypt.setPublicKey($("#pubkey").val());
+          var encrypted = encrypt.encrypt($("#input").val());
+
+          // Decrypt with the private key...
+          var decrypt = new JSEncrypt();
+          decrypt.setPrivateKey($("#privkey").val());
+          var uncrypted = decrypt.decrypt(encrypted);
+
+          // Now a simple check to see if the round-trip worked.
+          if (uncrypted == $("#input").val()) {
+            alert("It works!!!");
+          } else {
+            alert("Something went wrong....");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <label for="privkey">Private Key</label><br />
+    <textarea id="privkey" rows="15" cols="65">
+-----BEGIN RSA PRIVATE KEY-----
+MIICXQIBAAKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQ
+WMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNR
+aY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB
+AoGAfY9LpnuWK5Bs50UVep5c93SJdUi82u7yMx4iHFMc/Z2hfenfYEzu+57fI4fv
+xTQ//5DbzRR/XKb8ulNv6+CHyPF31xk7YOBfkGI8qjLoq06V+FyBfDSwL8KbLyeH
+m7KUZnLNQbk8yGLzB3iYKkRHlmUanQGaNMIJziWOkN+N9dECQQD0ONYRNZeuM8zd
+8XJTSdcIX4a3gy3GGCJxOzv16XHxD03GW6UNLmfPwenKu+cdrQeaqEixrCejXdAF
+z/7+BSMpAkEA8EaSOeP5Xr3ZrbiKzi6TGMwHMvC7HdJxaBJbVRfApFrE0/mPwmP5
+rN7QwjrMY+0+AbXcm8mRQyQ1+IGEembsdwJBAN6az8Rv7QnD/YBvi52POIlRSSIM
+V7SwWvSK4WSMnGb1ZBbhgdg57DXaspcwHsFV7hByQ5BvMtIduHcT14ECfcECQATe
+aTgjFnqE/lQ22Rk0eGaYO80cc643BXVGafNfd9fcvwBMnk0iGX0XRsOozVt5Azil
+psLBYuApa66NcVHJpCECQQDTjI2AQhFc1yRnCU/YgDnSpJVm1nASoRUnU8Jfm3Oz
+uku7JUXcVpt08DFSceCEX9unCuMcT72rAQlLpdZir876
+-----END RSA PRIVATE KEY-----</textarea
+    ><br />
+    <label for="pubkey">Public Key</label><br />
+    <textarea id="pubkey" rows="15" cols="65">
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtN
+FOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76
+xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4
+gwQco1KRMDSmXSMkDwIDAQAB
+-----END PUBLIC KEY-----</textarea
+    ><br />
+    <label for="input">Text to encrypt:</label><br />
+    <textarea id="input" name="input" type="text" rows="4" cols="70">This is a test!</textarea
+    ><br />
+    <input id="testme" type="button" value="Test Me!!!" /><br />
+  </body>
+</html> -->
+<!-- !블로그 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./jsencrypt.min.js"></script>
+    <script type="text/javascript">
+      //<![CDATA[
+      $(document).ready(function () {
+        // 암호화 하기
+        $("#encrypt").click(function () {
+          // 객체 생성
+          var crypt = new JSEncrypt(); // 키 설정
+          console.log("crypt", crypt);
+          crypt.setPrivateKey($("#publicKey").val());
+          var plainText = $("#plainText").val(); // 암호화
+          console.log("plainText", plainText);
+          var encryptedText = crypt.encrypt(plainText);
+          console.log("encryptedText", encryptedText);
+          $("#encryptedText").val(encryptedText);
+        }); // 복호화 하기
+        $("#decrypt").click(function () {
+          var crypt = new JSEncrypt();
+          crypt.setPrivateKey($("#privateKey").val());
+          var encryptedText = $("#encryptedText").val(); // 복호화
+          var decryptedText = crypt.decrypt(encryptedText);
+          $("#decryptedText").val(decryptedText);
+        });
+      }); //]]>
+    </script>
+  </head>
+  <body>
+    <div style="display: flex">
+      <div>
+        <label for="privateKey">Private key</label><br /><textarea
+          id="privateKey"
+          cols="66"
+          rows="16"
+        >
+  -----BEGIN RSA PRIVATE KEY-----MIICXQIBAAKBgQDLZL7JkIAxVOLqtEZr+SjJZYqS59ARp3/Z/l5Q6AOWryyrCJI4A/4RjFiZ2lN2a08WGgZuYrM+rk7mXmxQdAX1aUTXk9xxZX2YrO9g2TMxpJzrdDD6AKbDSqz9TLx2mBuLFKr+dJXX4FSg6GQF9ZAlP/PxuriRMQ5kbnqGPiMCvwIDAQABAoGAMlaw0XouAAeeUbBkbXyxF4dGEK3G1Ve7UNyfwy5pFPYt+/aXGb4DN5ygoRNj7L8KR9IRHWjYK/9AD8v2ysKsZmuXNt23ojkKHq5wirSCpO2vb244ApMQAlvZYdoAeUaYjMyq9RLBsPXh8yLAMrLGU6Yxsv5evRjrHnStW8LcImECQQDwnypVThxZP5d5vxDHV4xFvS0PFucR05TIEtpLvGIGQ8bzol9jz+A4irpIRHnyRfydyJQziS7Svp9EsSlWiOaVAkEA2GR8XZPTXTwtotF4dSSqu0sdERUCyShTAK4/vRjGviH0qITGPk+ZeCQp2ZV0WsY84/6mMRviiBn92+J7hS5TAwJAASRQOB1pxwalOl+svbVtpfsS1qp+KDh/0T89p/RZ5ru1mvxfRYL8BmiqH6OrjHnGjB0ijugMv9VFvja1AoMdzQJBALjo1SUZpunq/Iw/NxHS7Vnyi7oHHERMgvD39VtfCqV6WpiOLOEeH+R78o8NmUngUDP7bIRWcbMfksAMvsRFm4UCQQC3suGb43vEPOv8dGaIX7DxRCuvbgI+3mRn07bZe//iaxiQXphcMJArJB4bpxl+Sdq59miHPhHpTIYGN9fVHYr+-----END RSA PRIVATE KEY-----</textarea
+        ><br /><label for="publicKey">Public key</label><br /><textarea
+          id="publicKey"
+          cols="66"
+          rows="7"
+        >
+  -----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDLZL7JkIAxVOLqtEZr+SjJZYqS59ARp3/Z/l5Q6AOWryyrCJI4A/4RjFiZ2lN2a08WGgZuYrM+rk7mXmxQdAX1aUTXk9xxZX2YrO9g2TMxpJzrdDD6AKbDSqz9TLx2mBuLFKr+dJXX4FSg6GQF9ZAlP/PxuriRMQ5kbnqGPiMCvwIDAQAB-----END PUBLIC KEY-----</textarea
+        >
+      </div>
+      <div style="padding-left: 10px">
+        <label for="plainText">평문</label><br /><input
+          type="text"
+          id="plainText"
+          style="width: 400px"
+        /><br /><label for="encryptedText">암호화된 문장</label><br /><input
+          type="text"
+          id="encryptedText"
+          style="width: 400px"
+        /><br /><label for="decryptedText">복호화된 문장</label><br /><input
+          type="text"
+          id="decryptedText"
+          style="width: 400px"
+        /><br /><button id="encrypt">암호화</button><button id="decrypt">복호화</button>
+      </div>
+    </div>
+  </body>
+</html>
