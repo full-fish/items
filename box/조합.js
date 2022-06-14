@@ -10,3 +10,35 @@ function combination(arr, selectNum) {
   });
   return result;
 }
+//!
+const conbination = (arr, bucket, n) => {
+  if (n === 0) {
+    console.log(bucket);
+    return;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    const choice = arr[i];
+    const sliceArr = arr.slice(); // 재귀
+    conbination(sliceArr.slice(i + 1), bucket.concat(choice), n - 1);
+  }
+};
+conbination([1, 2, 3, 4], [], 3);
+//! 이게 내가 만든 보기 쉬운거
+function solution(arr, n) {
+  let result = [];
+  function combination(n, arr, tempArr) {
+    if (n === 0) {
+      result.push(tempArr.slice());
+      return;
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      const fixed = arr[i];
+      combination(n - 1, arr.slice(i + 1), tempArr.concat(fixed));
+    }
+  }
+  combination(n, arr, []);
+  return result;
+}
+console.log(solution([1, 2, 3, 4], 3));
