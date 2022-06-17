@@ -24,7 +24,6 @@ function bubbleSort(arr) {
   console.log(comparisons, count);
   return arr;
 }
-
+console.time();
 console.log(bubbleSort(arr));
-console.log(bubbleSort([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
-console.log(bubbleSort([3, 4, 6, 1, 8, 6, 5, 4]));
+console.timeEnd();

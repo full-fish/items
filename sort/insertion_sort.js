@@ -49,5 +49,9 @@ const insertionSort2 = function (arr) {
   console.log(comparisons, swaps);
   return sortedArr;
 };
+console.time();
 console.log(insertionSort(arr));
+console.timeEnd();
+console.time();
 console.log(insertionSort2(arr2));
+console.timeEnd();
