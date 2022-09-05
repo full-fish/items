@@ -5,15 +5,11 @@ let arr = [
 let arr2 = [5, 4, 3, 2, 1];
 function main(arr) {
   quickSort(arr, 0, arr.length - 1);
-  console.log("1");
   return arr;
 }
 function quickSort(arr, left, right) {
-  console.log(2);
   if (left < right) {
-    console.log(3);
     let q = partition(arr, left, right);
-    console.log(4);
     quickSort(arr, left, q - 1);
     quickSort(arr, q + 1, right);
   }
