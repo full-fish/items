@@ -28,3 +28,6 @@ function solution(n) {
   divisors.sort((a, b) => a - b);
   return divisors;
 }
+
+//! 제곱근이 정수면 약수의 개수가 홀수이며
+//! 정수가 아니면 약수의 개수가 짝수다
