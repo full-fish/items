@@ -7,7 +7,7 @@
 //     secure: false,
 //     auth: {
 //       user: "fullfish94@gmail.com",
-//       pass: "sktkfka5",
+//       pass: "비번비번",
 //     },
 //   });
 
@@ -32,62 +32,62 @@
 
 // main().catch(console.error);
 //!
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer')
 async function main() {
-  let testAccount = await nodemailer.createTestAccount();
+  let testAccount = await nodemailer.createTestAccount()
   let transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
+    host: 'smtp.ethereal.email',
     port: 587,
     secure: false,
     auth: {
-      user: "보내는 사람의 이메일주소",
-      pass: "보내는 사람의 비밀번호",
+      user: '보내는 사람의 이메일주소',
+      pass: '보내는 사람의 비밀번호',
     },
-  });
+  })
   let info = await transporter.sendMail({
-    from: "보내는 사람의 이메일주소",
-    to: "받는 사람의 이메일 주소",
-    subject: "제목",
-    text: "내용",
+    from: '보내는 사람의 이메일주소',
+    to: '받는 사람의 이메일 주소',
+    subject: '제목',
+    text: '내용',
     // html: "<b>Hello world?</b>",
-  });
+  })
 }
 
-main().catch(console.error);
+main().catch(console.error)
 //!
-var nodemailer = require("nodemailer");
+var nodemailer = require('nodemailer')
 
-var smtpTransporter = require("nodemailer-smtp-transport");
+var smtpTransporter = require('nodemailer-smtp-transport')
 function sendEmail(email, response) {
   //이메일 보내기
 
   var smtpTransport = nodemailer.createTransport(
     smtpTransporter({
-      service: "Naver",
+      service: 'Naver',
 
-      host: "smtp.naver.com",
+      host: 'smtp.naver.com',
 
       auth: {
-        user: "cwre1357@naver.com", //보내는 분의 메일계정
+        user: 'cwre1357@naver.com', //보내는 분의 메일계정
 
-        pass: "비번비번",
+        pass: '비번비번',
       },
     })
-  );
+  )
 
   var mailOption = {
-    from: "cwre1357@naver.com", // 보내는 분의 메일계정
-    to: "cwre1357@naver.com", // 받는 분의 메일계정 (여러 개 가능)
-    subject: "이것은 제목",
-    text: "현민님바보메롱",
-  };
+    from: 'cwre1357@naver.com', // 보내는 분의 메일계정
+    to: 'cwre1357@naver.com', // 받는 분의 메일계정 (여러 개 가능)
+    subject: '이것은 제목',
+    text: 'ㅎㅇㅎㅇ',
+  }
 
   smtpTransport.sendMail(mailOption, (err, response) => {
     // 메일을 보내는 코드
 
     if (err) {
-      console.log(err);
-      throw err;
+      console.log(err)
+      throw err
     }
 
     // response.status(200).json({
@@ -95,9 +95,9 @@ function sendEmail(email, response) {
     //   code: 200,
     //   message: "Sent Auth Email",
     // });
-  });
+  })
 }
-sendEmail();
+sendEmail()
 //! 랜덤 패스워드 생성
 // const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // const number = "0123456789";
