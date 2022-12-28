@@ -1,5 +1,5 @@
 let arr = [1, 2, 3, 4]
-let n = 4
+let n = 3
 function combination(arr, selectNum) {
   const result = []
   if (selectNum === 1) return arr.map(v => [v])
@@ -33,7 +33,7 @@ const conbination = (arr, bucket, n) => {
 function solution(arr, n) {
   let result = []
   function combination(n, tempArr, arr) {
-    if (n === 0) return result.push(tempArr.slice())
+    if (n === 0) return result.push(tempArr)
     for (let i = 0; i < arr.length; i++) {
       combination(n - 1, tempArr.concat(arr[i]), arr.slice(i + 1))
     }
@@ -45,7 +45,7 @@ function solution(arr, n) {
 function solution2(arr, n) {
   let result = []
   function combination(n, tempArr, index) {
-    if (n === 0) return result.push(tempArr.slice())
+    if (n === 0) return result.push(tempArr)
     for (let i = index; i < arr.length; i++) {
       combination(n - 1, tempArr.concat(arr[i]), i)
     }
@@ -58,7 +58,7 @@ function solution3(n) {
   let result = []
   let N = n
   function combination(n, tempArr, index) {
-    if (n === 0) return result.push(tempArr.slice())
+    if (n === 0) return result.push(tempArr)
     for (let i = index; i < N; i++) {
       combination(n - 1, tempArr.concat(i), i)
     }
