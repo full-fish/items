@@ -73,8 +73,8 @@ function subFun(a, b) {
 
 function compressionArr(str) {
   let compressionedArr = []
-  for (let i = 0; i < str.length; i += 7) {
-    compressionedArr.push(compression(str.slice(i, i + 7)))
+  for (let i = 0; i < str.length; i += 6) {
+    compressionedArr.push(compression(str.slice(i, i + 6)))
   }
   return compressionedArr
 }
@@ -85,7 +85,7 @@ function decompressArr(arr) {
   })
   return decompressed
 }
-let compressioned = compressionArr('Hi my name is choimanseon')
+let compressioned = compressionArr('Hi my name is ChoiManSeon')
 console.log(compressioned)
 let decompressed = decompressArr(compressioned)
 console.log(decompressed)
